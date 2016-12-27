@@ -14,10 +14,10 @@ defmodule CogSlack.Provider do
 
   def display_name, do: "Slack"
 
-  def start_link(config) do
+  def start_link() do
     case Application.ensure_all_started(:slack) do
       {:ok, _} ->
-        GenServer.start_link(__MODULE__, [config], name: __MODULE__)
+        GenServer.start_link(__MODULE__, [], name: __MODULE__)
       error ->
         error
     end
@@ -59,7 +59,8 @@ defmodule CogSlack.Provider do
     GenServer.call(__MODULE__, {:send_message, target, message}, :infinity)
   end
 
-  def init([config]) do
+  def init([]) do
+    config = Application.get_all_env(:cog_slack)
     token = Keyword.fetch!(config, :api_token)
     if String.starts_with?(token, "xoxb") == false do
       Logger.error("""
@@ -70,7 +71,6 @@ defmodule CogSlack.Provider do
       {:stop, :bad_slack_token}
     else
       incoming = Keyword.fetch!(config, :incoming_topic)
-
       {:ok, mbus} = Connection.connect()
       {:ok, pid} = Connector.start_link(token)
       {:ok, %__MODULE__{token: token, incoming: incoming, connector: pid, mbus: mbus}}
