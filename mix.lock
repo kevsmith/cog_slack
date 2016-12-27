@@ -1,6 +1,6 @@
 %{"carrier": {:git, "https://github.com/kevsmith/carrier.git", "f6a550d713ba71cafd19320820c99efb9fd5c7ca", []},
   "certifi": {:hex, :certifi, "0.7.0", "861a57f3808f7eb0c2d1802afeaae0fa5de813b0df0979153cbafcd853ababaf", [:rebar3], []},
-  "cog_chat": {:git, "https://github.com/kevsmith/cog_chat.git", "a543d7d8765fc34eea3de088f39cf2b9b43bc575", []},
+  "cog_chat": {:git, "https://github.com/kevsmith/cog_chat.git", "81a779e26da8cc2c0e470ab2b5655454546a495c", []},
   "conduit": {:git, "https://github.com/operable/conduit.git", "06bb0ed9638c5bf506a83d6c947068332d4dca11", []},
   "emqttc": {:git, "https://github.com/emqtt/emqttc.git", "815ebeca103025bbb5eb8e4b2f6a5f79e1236d4c", [branch: "master"]},
   "exjsx": {:hex, :exjsx, "3.2.1", "1bc5bf1e4fd249104178f0885030bcd75a4526f4d2a1e976f4b428d347614f0f", [:mix], [{:jsx, "~> 2.8.0", [hex: :jsx, optional: false]}]},
