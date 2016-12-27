@@ -1,2 +1,0 @@
-defmodule CogSlack do
-end
