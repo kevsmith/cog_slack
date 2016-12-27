@@ -14,10 +14,15 @@ defmodule CogSlack.Provider do
 
   def display_name, do: "Slack"
 
-  def start_link() do
+  def valid_config?() do
+    Application.get_env(:cog_slack, :api_token) != nil and
+    Application.get_env(:cog_slack, :incoming_topic) != nil
+  end
+
+  def start_link(args \\ []) do
     case Application.ensure_all_started(:slack) do
       {:ok, _} ->
-        GenServer.start_link(__MODULE__, [], name: __MODULE__)
+        GenServer.start_link(__MODULE__, args, name: __MODULE__)
       error ->
         error
     end
